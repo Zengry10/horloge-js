@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="./public/favicon.ico">
+    <title>JS Canvas Project</title>
+</head>
+
+<body>
+    <h1>Voici l'heure ! Il y a deux horloges pour être sûr de ne pas se tromper</h1>
+    <h1 id="clock"></h1>
+    <div class="container">
+        
+        <canvas id="canvas-scene" class="scene"></canvas>
+        <canvas id="canvas-scene-2" class="scene"></canvas>
+    </div>
+    <script type="module" src="./main.js"></script>
+</body>
+<style>
+    body {
+        background-color: rgb(85, 41, 41);
+    }
+
+    h1 {
+        font-family: Arial, Helvetica, sans-serif;
+        text-align: center;
+        text-transform: uppercase;
+        font-style: italic;
+        color: white;
+        line-height: 1.4em;
+        font-size: 1.5rem;
+    }
+
+    .container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 1rem;
+    }
+
+    .scene {
+        width: 40vw;
+        height: 60vw;
+    }
+</style>
+
+<script>
+    function updateClock() {
+        const now = new Date();
+        const hours = String(now.getHours()).padStart(2, '0');
+        const minutes = String(now.getMinutes()).padStart(2, '0');
+        const seconds = String(now.getSeconds()).padStart(2, '0');
+        document.getElementById('clock').textContent = `${hours}:${minutes}:${seconds}`;
+    }
+
+    // Mettre à jour l'horloge chaque seconde
+    setInterval(updateClock, 1000);
+
+    // Mettre à jour l'horloge dès le chargement de la page
+    updateClock();
+</script>
+</html>
